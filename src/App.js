@@ -7,7 +7,7 @@ import ShopPage from './Pages/shop/shop_component';
 import Header from './Components/header/header_component';
 import SignInAndSignUp from './Pages/sign-in_&_sign-up/sign-in_&_sign-up_component';
 
-import {auth} from './firebase/firebase.utils'
+import {auth, createUserProfileDocument} from './firebase/firebase.utils'
 
 
 
@@ -24,9 +24,8 @@ class App extends Component{
   unsubscribeFromAuth = null
   
   componentDidMount(){
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      this.setState({ currentUser: user })
-
+    this.unsubscribeFromAuth = auth.onAuthStateChanged( async user => {
+      createUserProfileDocument(user)
       console.log(user)
     })
   }
@@ -37,7 +36,7 @@ class App extends Component{
   render(){
     return (
       <div>
-      <Header />
+      <Header currentUser={this.state.currentUser}/>
         <Switch>
           <Route exact path='/' component={HomePage}></Route>
           <Route path='/shop' component={ShopPage}></Route>
