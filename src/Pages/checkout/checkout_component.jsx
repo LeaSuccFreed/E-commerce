@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { connect }from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
@@ -40,7 +39,7 @@ function CheckoutPage({cartItems, total}) {
                 ))
             }
             <div className='total'>
-                <span>TOTAL: {total} </span> 
+                <span>TOTAL: ${total} </span> 
             </div>
                 
         </div>
