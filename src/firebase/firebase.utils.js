@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firebase-firestore'
 import 'firebase/firebase-auth';
+import { rejects } from 'assert';
 
 
 const config = {
@@ -73,13 +74,22 @@ export const convertCollectionsSnapshotToMap = (collections) => {
     }, {})
 }
 
+export const getCurrentUser = () => {
+    return new Promise((resolve,reject) => {
+        const unsubscribe = auth.onAuthStateChanged(userAuth => {
+            unsubscribe();
+            resolve(userAuth)
+        }, reject)
+    })
+}
+
 firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({prompt: 'select_account'});
-export const signInwithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({prompt: 'select_account'});
+export const signInwithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
