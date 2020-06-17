@@ -6,9 +6,9 @@ import CollectionItem from '../../Components/collection-item/collectio-item_comp
 import { selectCollection } from '../../Redux/shop/shop_selectors'
 import { CollectionPageContainer, CollectionTitle, CollectionItemsContainer } from './collection_stylex';
 
-
 function CollectionPage({collection}) {
     const { title, items } = collection;
+    
     return (
         <CollectionPageContainer>
             <CollectionTitle>{ title }</CollectionTitle>
