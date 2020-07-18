@@ -1,7 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/firebase-firestore'
 import 'firebase/firebase-auth';
-import { rejects } from 'assert';
 
 
 const config = {

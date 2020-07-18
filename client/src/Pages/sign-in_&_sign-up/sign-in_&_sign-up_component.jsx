@@ -8,10 +8,10 @@ import { SignInAndSignUpContainer } from './sign-in-and-sign-up.styles';
 
 
 const SignInAndSignUp = ()=>(
-    <SignInAndSignUp>
+    <SignInAndSignUpContainer>
         <SignIn/>
         <SignUp/>
-    </SignInAndSignUp>
+    </SignInAndSignUpContainer>
     )
 
 
